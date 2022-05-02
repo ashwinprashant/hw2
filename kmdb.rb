@@ -283,3 +283,4 @@ new_role["movie_id"] = dark_knight_rises["id"]
 new_role["actor_id"] = hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
+
