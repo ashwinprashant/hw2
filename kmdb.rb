@@ -101,12 +101,12 @@ Movie.destroy_all
 Actor.destroy_all
 Role.destroy_all
 
-# Studio
+# Defining Studio
 new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
 
-# All actors
+# Defining all actors
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
 new_actor.save
@@ -151,7 +151,7 @@ new_actor = Actor.new
 new_actor["name"] = "Anne Hathaway"
 new_actor.save
 
-# All movies
+# Defining all movies
 
 warner_bros = Studio.find_by({"name" => "Warner Bros."})
 
@@ -176,7 +176,7 @@ new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = warner_bros["id"]
 new_movie.save
 
-# All roles
+# Defining all roles
 
 batman_begins = Movie.find_by({"title" => "Batman Begins"})
 dark_knight = Movie.find_by({"title" => "The Dark Knight"})
@@ -193,6 +193,8 @@ gyllenhaal = Actor.find_by({"name" => "Maggie Gyllenhaal"})
 hardy = Actor.find_by({"name" => "Tom Hardy"})
 gordon_levitt = Actor.find_by({"name" => "Joseph Gordon-Levitt"})
 hathaway = Actor.find_by({"name" => "Anne Hathaway"})
+
+# Characters of Batman Begins
 
 new_role = Role.new
 new_role["movie_id"] = batman_begins["id"]
@@ -224,6 +226,8 @@ new_role["actor_id"] = holmes["id"]
 new_role["character_name"] = "Rachel Dawes"
 new_role.save
 
+# Characters of The Dark Knight
+
 new_role = Role.new
 new_role["movie_id"] = dark_knight["id"]
 new_role["actor_id"] = bale["id"]
@@ -254,6 +258,8 @@ new_role["actor_id"] = gyllenhaal["id"]
 new_role["character_name"] = "Rachel Dawes"
 new_role.save
 
+# Characters of The Dark Knight Rises
+
 new_role = Role.new
 new_role["movie_id"] = dark_knight_rises["id"]
 new_role["actor_id"] = bale["id"]
@@ -283,4 +289,33 @@ new_role["movie_id"] = dark_knight_rises["id"]
 new_role["actor_id"] = hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
+
+# Querying data to generate report
+
+puts "Movies"
+puts "======"
+
+#activities = Activity.where({"salesperson_id" => ben["id"]})
+#contact = Contact.find_by({"id" => activity["contact_id"]})
+# read the first_name and last_name columns from the contact row
+#contact_first_name = contact["first_name"]
+#contact_last_name = contact["last_name"]
+
+# read the note column from the activity row
+#note = activity["note"]
+
+# display a string with the contact's full name and note
+#puts "#{contact_first_name} #{contact_last_name} - #{note}"
+#end
+
+movies = Movie.where({"studio_id" => warner_bros["id"]})
+for movie in movies
+    movie = Movie.find_by({"id" => movie["studio_id"]})
+    movie_title = movie["title"]
+    movie_year_released = movie["year_released"]
+    movie_rated = movie["rated"]
+    movie_studio = movie["studio_id"]
+puts "#{movie_title} #{movie_year_released} #{movie_rated} #{movie_studio}"
+end
+
 
