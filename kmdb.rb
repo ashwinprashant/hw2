@@ -79,22 +79,21 @@
 # TODO!
 
 # Prints a header for the movies output
-puts "Movies"
-puts "======"
-puts ""
+#puts "Movies"
+#puts "======"
+#puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
 # Prints a header for the cast output
-puts ""
-puts "Top Cast"
-puts "========"
-puts ""
+#puts ""
+#puts "Top Cast"
+#puts "========"
+#puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
-
 
 Studio.destroy_all
 Movie.destroy_all
@@ -309,13 +308,26 @@ puts "======"
 #end
 
 movies = Movie.where({"studio_id" => warner_bros["id"]})
+
 for movie in movies
-    movie = Movie.find_by({"id" => movie["studio_id"]})
     movie_title = movie["title"]
     movie_year_released = movie["year_released"]
     movie_rated = movie["rated"]
-    movie_studio = movie["studio_id"]
-puts "#{movie_title} #{movie_year_released} #{movie_rated} #{movie_studio}"
+    studio_name = warner_bros["name"]
+puts "#{movie_title} #{movie_year_released} #{movie_rated} #{studio_name}"
 end
 
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
 
+roles = Role.find_by({"movie_id" => Movie["id"])
+actors = Role.find_by({"actor_id" => Actor["id"]})
+
+for role in roles
+    role_movie = role["movie_id"]
+    role_actor = actors["actor_id"]
+    name_of_character = role["character_name"]
+puts "#{role_movie} #{role_actor} #{name_of_character}"
+end
