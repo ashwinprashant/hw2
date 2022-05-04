@@ -294,18 +294,7 @@ new_role.save
 puts "Movies"
 puts "======"
 
-#activities = Activity.where({"salesperson_id" => ben["id"]})
-#contact = Contact.find_by({"id" => activity["contact_id"]})
-# read the first_name and last_name columns from the contact row
-#contact_first_name = contact["first_name"]
-#contact_last_name = contact["last_name"]
 
-# read the note column from the activity row
-#note = activity["note"]
-
-# display a string with the contact's full name and note
-#puts "#{contact_first_name} #{contact_last_name} - #{note}"
-#end
 
 movies = Movie.where({"studio_id" => warner_bros["id"]})
 
@@ -314,7 +303,7 @@ for movie in movies
     movie_year_released = movie["year_released"]
     movie_rated = movie["rated"]
     studio_name = warner_bros["name"]
-puts "#{movie_title} #{movie_year_released} #{movie_rated} #{studio_name}"
+puts "#{movie_title} | #{movie_year_released} | #{movie_rated} | #{studio_name}"
 end
 
 puts ""
@@ -332,6 +321,6 @@ for movie in movies
             name_of_character = role["character_name"]
             actors = Actor.find_by({"id" => role["actor_id"]})
             actor_name = actors["name"]
-            puts "#{movie_title} #{actor_name} #{name_of_character}"
+            puts "#{movie_title} | #{actor_name} | #{name_of_character}"
         end
 end
