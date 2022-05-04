@@ -322,12 +322,16 @@ puts "Top Cast"
 puts "========"
 puts ""
 
-roles = Role.find_by({"movie_id" => Movie["id"])
-actors = Role.find_by({"actor_id" => Actor["id"]})
-
-for role in roles
-    role_movie = role["movie_id"]
-    role_actor = actors["actor_id"]
-    name_of_character = role["character_name"]
-puts "#{role_movie} #{role_actor} #{name_of_character}"
+movies = Movie.where({"studio_id" => warner_bros["id"]})
+for movie in movies
+    movie_title = movie["title"]
+    movie_number = movie["id"]
+    roles = Role.where({"movie_id" => movie["id"]})
+        for role in roles
+            actor_number = role["actor_id"]
+            name_of_character = role["character_name"]
+            actors = Actor.find_by({"id" => role["actor_id"]})
+            actor_name = actors["name"]
+            puts "#{movie_title}                #{actor_name}                  #{name_of_character}"
+        end
 end
