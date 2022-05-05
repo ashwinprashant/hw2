@@ -105,7 +105,7 @@ new_studio = Studio.new
 new_studio["name"] = "Warner Bros."
 new_studio.save
 
-# Defining all actors
+# Defining actors for Batman Begins
 new_actor = Actor.new
 new_actor["name"] = "Christian Bale"
 new_actor.save
@@ -126,6 +126,8 @@ new_actor = Actor.new
 new_actor["name"] = "Gary Oldman"
 new_actor.save
 
+#defining additional actors for The Dark Knight 
+
 new_actor = Actor.new
 new_actor["name"] = "Heath Ledger"
 new_actor.save
@@ -137,6 +139,8 @@ new_actor.save
 new_actor = Actor.new
 new_actor["name"] = "Maggie Gyllenhaal"
 new_actor.save
+
+#defining additional actors for The Dark Knight Rises
 
 new_actor = Actor.new
 new_actor["name"] = "Tom Hardy"
@@ -175,7 +179,7 @@ new_movie["rated"] = "PG-13"
 new_movie["studio_id"] = warner_bros["id"]
 new_movie.save
 
-# Defining all roles
+# Defining all roles played by actors
 
 batman_begins = Movie.find_by({"title" => "Batman Begins"})
 dark_knight = Movie.find_by({"title" => "The Dark Knight"})
@@ -289,7 +293,7 @@ new_role["actor_id"] = hathaway["id"]
 new_role["character_name"] = "Selina Kyle"
 new_role.save
 
-# Querying data to generate report
+# Querying data to generate movies report
 
 puts "Movies"
 puts "======"
@@ -305,6 +309,8 @@ for movie in movies
     studio_name = studio["name"]
 puts "#{movie_title} | #{movie_year_released} | #{movie_rated} | #{studio_name}"
 end
+
+# Querying data to generated roles report
 
 puts ""
 puts "Top Cast"
